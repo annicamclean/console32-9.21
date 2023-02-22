@@ -1,0 +1,86 @@
+Microsoft (R) Macro Assembler Version 14.29.30146.0	    09/21/22 09:46:12
+example.asm						     Page 1 - 1
+
+
+				; I have abided by the UNCG Academic Integrity Policy
+				; Author:  Annica McLean
+				; Date:    September 21, 2022
+				; This program will divide 2 numbers
+
+				.586
+				.MODEL FLAT
+
+				.STACK 4096
+
+ 00000000			.DATA
+				;divisor1    BYTE    03
+				;dividend1   WORD    47
+				;divisor2    WORD    10
+				;dividend2   DWORD   1007
+ 00000000 00000007		divisor3    DWORD   00000007
+ 00000004			dividend3   QWORD   65
+	   0000000000000041
+				;number	    DWORD	-105
+				;sum         DWORD   ?
+
+ 00000000			.CODE
+ 00000000			main PROC
+				    
+ 00000000  B8 00000000		    mov     EAX, 0
+ 00000005  BA 00000000		    mov     EDX, 0
+
+				    mov     EAX, dividend3   ;ERROR: instruction operand must be the same 
+example.asm(27) : error A2022:instruction operands must be the same size
+ 0000000A  F7 35 00000000 R	    div     divisor3
+				    ;div     dividend2
+				    ;mov     ax, dividend1	; first number to EAX
+				    ;div     divisor1
+				    ;add     eax, 158		; add 158 to EAX
+					;mov		sum, eax		; put sum into memory
+						     
+ 00000010  B8 00000000		    mov     eax, 0			; exit with return code 0 always leave this line
+ 00000015  C3			    ret
+ 00000016			main ENDP
+				END                         ; end of source code
+
+Microsoft (R) Macro Assembler Version 14.29.30146.0	    09/21/22 09:46:12
+example.asm						     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
+_DATA  . . . . . . . . . . . . .	32 Bit	 0000000C Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000021 Para	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000021 Public
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000000h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+dividend3  . . . . . . . . . . .	QWord	 00000004 _DATA	
+divisor3 . . . . . . . . . . . .	DWord	 00000000 _DATA	
+
+	   0 Warnings
+	   1 Errors
